@@ -1,0 +1,15 @@
+{% extends 'layout/basic.html' %}
+
+{% block content %}
+{% for bb in bbs %}
+<div class="box">
+    <h2>{{ bb.store_name }} {{ bb.discount }}</h2>
+    <a href="{{ bb.link }}">{{ bb.link }}</a>
+    <p>{{ bb.content }}</p>
+    <p><a href="{% url 'by_rubric' bb.rubric.pk %}">{{ bb.rubric.name }}</a></p>
+    <p>Акция действует с {{ bb.discount_start|date:"d.m.Y" }} по {{ bb.discount_end|date:"d.m.Y" }}</p>
+    <b>Промокод: {{ bb.code }}</b>
+    <p>Опубликовано: {{ bb.published|date:"d.m.Y" }}</p>
+</div>
+{% endfor %}
+{% endblock %}
