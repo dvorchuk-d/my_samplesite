@@ -5,7 +5,7 @@
 {% block content %}
 <h2>Рубрика: {{ current_rubric.name }}</h2>
 {% for bb in bbs %}
-<div>
+<div class="box">
     <h2>{{ bb.store_name }} {{ bb.discount }}</h2>
     <a href="{{ bb.link }}">{{ bb.link }}</a>
     <p>{{ bb.content }}</p>

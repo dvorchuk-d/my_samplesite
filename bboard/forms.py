@@ -1,5 +1,4 @@
 from django.forms import ModelForm
-
 from bboard.models import MyDb
 
 

@@ -101,6 +101,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+ABSOLUTE_URL_OVERRIDES = {
+    'bboard.rubric': lambda rec: f'/bboard/{rec.pk}/'
+}
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 

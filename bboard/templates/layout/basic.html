@@ -17,6 +17,8 @@
             <a href="{% url 'index' %}">Главная</a>
             {% for rubric in rubrics %}
             <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
+            <! Метод создания ссылок, если в settings.py указан ABSOLUTE_URL_OVERRIDES>
+            <!a href="{{ rubric.get_absolute_url }}"><!{{ rubric.name }}><!/a>
             {% endfor %}
             <p><a href="{% url 'add' %}">Добавить скидку</a></p>
         </nav>

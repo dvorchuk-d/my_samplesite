@@ -1,7 +1,5 @@
 from django.contrib import admin
-
 from bboard.models import MyDb
-
 from bboard.models import Rubrics
 
 
