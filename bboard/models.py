@@ -22,6 +22,7 @@ class MyDb(models.Model):
         errors = {}
         if not self.content:
             errors['content'] = ValidationError('Укажите описание скидки')
+
         if errors:
             raise ValidationError(errors)
 
