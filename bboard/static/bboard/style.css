@@ -1,20 +1,52 @@
-header h1 {
-    font-size: 40pt;
-    text-transform: uppercase;
-    text-align: center;
-    background: url("logo_2.jpg") left / auto 100% no-repeat;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
 }
 
-nav {
-    font-size: 15pt;
-    width: 150px;
-    float: left;
+.header-top {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background: #367eea96;
 }
 
-nav a {
-    display: block;
-    margin: 10px 0px;
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 200px;
 }
+
+.nav a {
+    text-decoration: none;
+    color: #565e59;
+}
+.nav li {
+     display: inline-block;
+     font-size: 14px;
+     padding-right: 15px;
+     padding-left: 15px;
+}
+
+.container-head-top {
+    width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+}
+
+.social-icons {
+    padding-right: 20px;
+}
+
+.social-icons img {
+    border-radius: 50%;
+}
+
 
 section {
     margin-left: 300px;

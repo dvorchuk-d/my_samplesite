@@ -9,7 +9,7 @@ def index(request):
     bbs = MyDb.objects.all()
     rubrics = Rubrics.objects.all()
     context = {'bbs': bbs, 'rubrics': rubrics}
-    return render(request, "bboard/index_temp.html", context)
+    return render(request, "bboard/index.html", context)
 
 
 def by_rubric(request, rubric_id):

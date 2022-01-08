@@ -1,30 +1,68 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type"
-        content="text/html; charset=utf-8">
-        <link rel="stylesheet" type="text/css"
-        href="{% static 'bboard/style.css' %}">
-        <title>{% block title %}Главная{% endblock %}</title>
-    </head>
-    <body>
-        <header>
-            <h1>Скидки</h1>
-        </header>
-        <nav>
-            <a href="{% url 'index' %}">Главная</a>
-            {% for rubric in rubrics %}
-            <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
-            <! Метод создания ссылок, если в settings.py указан ABSOLUTE_URL_OVERRIDES>
-            <!a href="{{ rubric.get_absolute_url }}"><!{{ rubric.name }}><!/a>
-            {% endfor %}
-            <p><a href="{% url 'add' %}">Добавить скидку</a></p>
-        </nav>
-        <section>
-            {% block content %}
-            {% endblock %}
-        </section>
-    </body>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'bboard/style.css' %}">
+    <title>{% block title %}Головна сторінка - Fishing paradise{% endblock %}</title>
+    <style>
+        .header-middle {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            background: #3c71d2;
+        }
+
+        .container-head-mid {
+            width: 1200px;
+            height: 120px;
+            margin-right: auto;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 25pt;
+            text-transform: uppercase;
+            text-align: center;
+            color: #ffffffd1;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-top">
+        <div class="container-head-top">
+            <ul class="nav">
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                {% for rubric in rubrics %}
+                <li><a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a></li>
+                {% endfor %}
+                <li><a href="{% url 'add' %}">Добавить скидку</a></li>
+            </ul>
+            <a class="social-icons" href="#" rel="nofollow" target="_blank" title="Ми у Facebook">
+                <img src="{% static 'bboard/facebook_logo.png' %}" alt="facebook-logo">
+            </a>
+            <a class="social-icons" href="#" rel="nofollow" target="_blank" title="Ми у Instagram">
+                <img src="{% static 'bboard/inst_logo.png' %}" alt="instagram-logo" width="28px" height="28px">
+            </a>
+        </div>
+        <!--container-head-top-->
+    </div>
+    <!--header-top-->
+    <div class="header-middle">
+        <div class="container-head-mid">
+            <img src="{% static 'bboard/logo.png' %}" alt="logo" width="90px" height="90px">
+            <h1>Fishing paradise</h1>
+        </div>
+        <!--container-head-mid-->
+    </div>
+    <!--header-middle-->
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+</body>
 </html>
