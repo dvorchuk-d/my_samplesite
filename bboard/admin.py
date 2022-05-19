@@ -4,7 +4,9 @@ from bboard.models import Rubrics
 
 
 class MyDbAdmin(admin.ModelAdmin):
-    list_display = ('store_name', 'content', 'discount', 'discount_start', 'discount_end', 'rubric')
+    """Model view for administrative mode of app"""
+    list_display = ('store_name', 'content', 'discount',
+                    'discount_start', 'discount_end', 'rubric')
     list_display_links = ('store_name',)
     search_fields = ('discount', 'store_name')
 

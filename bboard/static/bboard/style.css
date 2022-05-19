@@ -11,6 +11,29 @@ body {
     background: #367eea96;
 }
 
+.header-middle {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    background: #3c71d2;
+}
+
+.container-head-mid {
+    width: 1200px;
+    height: 120px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-size: 25pt;
+    text-transform: uppercase;
+    text-align: center;
+    color: #ffffffd1;
+}
+
 .nav {
     list-style-type: none;
     margin: 0;
@@ -60,5 +83,6 @@ section {
     width: 600px;
     background: white;
     border: 2px double black;
-    margin-top: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }

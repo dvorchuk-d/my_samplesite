@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 
 
 class MyDb(models.Model):
+    """Model for discounts information"""
     store_name = models.CharField(max_length=50, verbose_name="Название магазина")
     link = models.TextField(null=True, blank=True, verbose_name="Ссылка",
                             validators=[validators.URLValidator()],
@@ -19,6 +20,7 @@ class MyDb(models.Model):
     rubric = models.ForeignKey('Rubrics', on_delete=models.PROTECT, null=True, verbose_name="Рубрика")
 
     def clean(self):
+        """This function validates field 'Content' of MyDb model (it shouldn't be empty)"""
         errors = {}
         if not self.content:
             errors['content'] = ValidationError('Укажите описание скидки')
@@ -27,12 +29,14 @@ class MyDb(models.Model):
             raise ValidationError(errors)
 
     class Meta:
+        """Meta-information of MyDb model"""
         verbose_name_plural = "Скидки"
         verbose_name = "Скидка"
         ordering = ["-discount"]
 
 
 class Rubrics(models.Model):
+    """Model for rubrics of the discounts"""
     name = models.CharField(max_length=30, db_index=True, verbose_name="Название")
 
     def __str__(self):
