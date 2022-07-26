@@ -1,0 +1,47 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:12
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      PGUSER: ${DB_USER}
+      PGDATABASE: ${DB_NAME}
+      PGPASSWORD: ${DB_PASSWORD}
+    ports:
+      - ${DB_HOST}:${DB_LOCAL_PORT}:5432
+    restart: unless-stopped
+
+  app:
+    build: .
+    restart: unless-stopped
+    command: bash ./start_server.sh
+    environment:
+      DATABASE_URI: ${PROD_DATABASE_URI}
+    ports:
+      - 127.0.0.1:8008:80
+    depends_on:
+      - db
+
+  backup:
+    build: ./pg-backup
+    restart: unless-stopped
+    volumes:
+      - ./${BACKUP_DIR}:/backup
+    links:
+      - db
+    environment:
+      SCHEDULE: "@hourly"
+      POSTGRES_DATABASE: ${DB_NAME}
+      POSTGRES_HOST: db
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_PORT: 5432
+      POSTGRES_EXTRA_OPTS: "--schema=public --blobs"
+      DAYS_HISTORY: 15
+
+volumes:
+  db_data:

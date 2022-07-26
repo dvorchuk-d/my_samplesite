@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from django.views.generic.edit import CreateView
+from django.views.generic.base import View, TemplateView
 from django.urls import reverse_lazy
 from bboard.models import MyDb, Rubrics
 from bboard.forms import MyDbForm
@@ -11,6 +13,17 @@ def index(request):
     rubrics = Rubrics.objects.all()
     context = {'bbs': bbs, 'rubrics': rubrics}
     return render(request, "bboard/index.html", context)
+
+
+class IndexView(TemplateView):
+    """Version of index view in OOP style"""
+    template_name = "bboard/index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['bbs'] = MyDb.objects.all()
+        context['rubrics'] = Rubrics.objects.all()
+        return context
 
 
 def by_rubric(request, rubric_id):
@@ -33,3 +46,11 @@ class MyDbCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['rubrics'] = Rubrics.objects.all()
         return context
+
+
+class TestViewForView(View):
+    """This is test class to show using of View base class"""
+    http_method_names = ['get']
+
+    def get(request, kwargs):
+        return HttpResponse(f"Hello, {kwargs.META['HTTP_HOST']}")

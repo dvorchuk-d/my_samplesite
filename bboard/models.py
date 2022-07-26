@@ -17,7 +17,13 @@ class MyDb(models.Model):
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name="Опубликовано")
     discount_start = models.DateField(db_index=True, verbose_name="Начало действия скидки")
     discount_end = models.DateField(db_index=True, verbose_name="Конец действия скидки")
-    rubric = models.ForeignKey('Rubrics', on_delete=models.PROTECT, null=True, verbose_name="Рубрика")
+    rubric = models.ForeignKey(
+        'Rubrics',
+        on_delete=models.PROTECT,
+        null=True,
+        verbose_name="Рубрика",
+        related_name="discounts"
+    )
 
     def clean(self):
         """This function validates field 'Content' of MyDb model (it shouldn't be empty)"""
