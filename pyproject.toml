@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "fishing_paradise"
+version = "0.0.1"
+description = ""
+authors = ["Danil Dvorchuk <dvorchyk.d@gmail.com>"]
+license = "n"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+asgiref = "^3.5.2"
+"backports.entry-points-selectable" = "^1.1.0"
+Django = "^3.2.8"
+psycopg2-binary = "^2.9.1"
+requests = "^2.26.0"
+sqlparse = "^0.4.2"
+toml = "^0.10.2"
+python-dotenv = "^0.19.2"
+virtualenv = "^20.15.1"
+
+[tool.poetry.dev-dependencies]
+appdirs = "1.4.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
